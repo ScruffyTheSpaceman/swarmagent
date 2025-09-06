@@ -1,0 +1,254 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 222.2 84% 4.9%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 224.3 76.3% 94.1%;
+  --radius: 0.5rem;
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  .gradient-bg {
+    @apply bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900;
+  }
+  
+  .glass-effect {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10;
+  }
+  
+  .agent-card {
+    @apply bg-gradient-to-br from-slate-800/50 to-slate-700/50 border border-slate-600/30;
+  }
+  
+  .status-indicator {
+    @apply w-3 h-3 rounded-full animate-pulse;
+  }
+  
+  .memory-stat {
+    @apply bg-slate-700/30 p-3 rounded-lg border border-slate-600/30;
+  }
+  
+  .qd-feature-card {
+    @apply bg-gradient-to-br from-indigo-600/10 to-purple-600/10 border border-indigo-500/20;
+  }
+  
+  .auth-form {
+    @apply bg-gradient-to-br from-slate-800/50 to-slate-700/50 border border-slate-600/30;
+  }
+  
+  .nav-item {
+    @apply flex items-center gap-2 px-3 py-2 rounded-md transition-colors;
+  }
+  
+  .nav-item-active {
+    @apply bg-blue-600 text-white;
+  }
+  
+  .nav-item-inactive {
+    @apply text-gray-300 hover:text-white hover:bg-slate-800;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent-foreground));
+}
+
+/* Loading spinner styles */
+.loading-spinner {
+  @apply w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin;
+}
+
+/* Agent status colors */
+.status-idle {
+  @apply bg-green-500;
+}
+
+.status-busy {
+  @apply bg-yellow-500;
+}
+
+.status-reasoning {
+  @apply bg-purple-500;
+}
+
+.status-planning {
+  @apply bg-blue-500;
+}
+
+.status-executing {
+  @apply bg-orange-500;
+}
+
+.status-reflecting {
+  @apply bg-indigo-500;
+}
+
+.status-collaborating {
+  @apply bg-pink-500;
+}
+
+.status-offline {
+  @apply bg-red-500;
+}
+
+.status-error {
+  @apply bg-red-600;
+}
+
+/* QD-Enhanced specific styles */
+.qd-memory-indicator {
+  @apply bg-gradient-to-r from-purple-500/20 to-blue-500/20 border border-purple-400/30;
+}
+
+.qd-tool-badge {
+  @apply bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-400/30;
+}
+
+.qd-collaboration-link {
+  @apply bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/30;
+}
+
+.qd-learning-progress {
+  @apply bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border border-indigo-400/30;
+}
+
+/* Authentication form styles */
+.auth-input {
+  @apply bg-slate-700 border-slate-600 text-white placeholder-slate-400;
+}
+
+.auth-button {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700;
+}
+
+/* Responsive design utilities */
+@media (max-width: 768px) {
+  .mobile-stack {
+    @apply flex-col space-y-4 space-x-0;
+  }
+  
+  .mobile-full {
+    @apply w-full;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .agent-card {
+    @apply border-2 border-white/50;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse,
+  .animate-spin,
+  .animate-fade-in,
+  .animate-slide-up {
+    animation: none;
+  }
+}
